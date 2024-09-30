@@ -1,0 +1,28 @@
+server:
+  port: ${MICROSERVICE_PORT}
+
+spring:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  cloud:
+    vault:
+      host: ${VAULT_HOST}
+      port: ${VAULT_PORT}
+      token: ${VAULT_TOKEN}
+      scheme: ${VAULT_SCHEME}
+      kv:
+        enabled: true
+        backend: microservices
+        default-context: truth-or-dare-tg-bot-questions-service/${PROFILE}
+  profiles:
+    active: configuration,credentials,db
+  config:
+    import: vault://
