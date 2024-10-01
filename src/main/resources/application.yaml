@@ -23,6 +23,6 @@ spring:
         backend: microservices
         default-context: truth-or-dare-tg-bot-questions-service/${PROFILE}
   profiles:
-    active: configuration,credentials,db
+    active: db
   config:
     import: vault://
